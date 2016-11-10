@@ -49,7 +49,7 @@ namespace UnityStandardAssets.Water
 
             if (!reflectCamera.targetTexture)
             {
-                reflectCamera.targetTexture = CreateTextureFor(cam);
+				reflectCamera.targetTexture = CreateTextureFor(cam);
             }
 
             return reflectCamera;
