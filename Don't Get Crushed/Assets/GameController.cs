@@ -21,6 +21,7 @@ public class GameController : MonoBehaviour
 	public GameObject player;
 
 	public GameObject canvas;
+	public BleacherController bc;
 
 
 	// Use this for initialization
@@ -42,9 +43,11 @@ public class GameController : MonoBehaviour
 		if (_paused) {
 			Time.timeScale = 1;
 			_paused = !_paused;
+			bc.paused = _paused;
 		} else {
 			Time.timeScale = 0;
 			_paused = !_paused;
+			bc.paused = _paused;
 		}
 		var enableds = this.canvas.GetComponentsInChildren<RawImage> ();
 

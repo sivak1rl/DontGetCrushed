@@ -5,6 +5,7 @@ public class BleacherController : MonoBehaviour {
 	public GameObject leftBleacher;
 	public GameObject rightBleacher;
 	public float speed;
+	public bool paused;
 
 	// Use this for initialization
 	void Start () {
@@ -13,8 +14,9 @@ public class BleacherController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		this.leftBleacher.transform.localPosition += new Vector3 (0, 0, -speed);
-		this.rightBleacher.transform.localPosition += new Vector3 (0, 0, speed);
-		//this.rightBleacher.transform.GetComponent<Rigidbody>().velocity = new Vector3(0,0,speed);
+		if(!paused) {
+			this.leftBleacher.transform.localPosition += new Vector3 (0, 0, -speed);
+			this.rightBleacher.transform.localPosition += new Vector3 (0, 0, speed);
+		}
 	}
 }

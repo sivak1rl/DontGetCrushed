@@ -18,14 +18,9 @@ public class PlayerController: MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+		
 		if (b1 && b2) {
 			cover.SetActive(true);
-			float f = 0f;
-			while (f <= 1) {	
-				f += 0.01f;
-				cover.GetComponent<RawImage> ().color = new Color (0f, 0f, 0f, f);
-
-			}
 			StartCoroutine(restartCurrentScene());
 		}
 	}
@@ -37,7 +32,6 @@ public class PlayerController: MonoBehaviour {
 			float f = 0f;
 			while (f <= 1) {	
 				f += 0.01f;
-				cover.GetComponent<RawImage> ().color = new Color (0f, 0f, 0f, f);
 
 			}
 			StartCoroutine(restartCurrentScene());
@@ -75,17 +69,20 @@ public class PlayerController: MonoBehaviour {
 
 	public IEnumerator restartCurrentScene()
 	{
-		int time = 0;
+		float time = 0f;
+
 		while (true) {
-			if (time == 2) {
+			if (time >= 2) {
 				Debug.Log ("SCENE");
 				int scene = SceneManager.GetActiveScene ().buildIndex;
 
 				SceneManager.LoadScene (scene, LoadSceneMode.Single);
 			}
-			yield return new WaitForSeconds (1f);
+			yield return new WaitForSeconds (.01f);
+
+			cover.GetComponent<RawImage> ().color = new Color (0f, 0f, 0f, time);
 			Debug.Log (time);
-			time++;
+			time += .01f;
 		}
 	}
 }
