@@ -21,7 +21,7 @@ public class PlayerController: MonoBehaviour {
 		
 		if (b1 && b2) {
 			cover.SetActive(true);
-			StartCoroutine(restartCurrentScene());
+			StartCoroutine(endGame());
 		}
 	}
 
@@ -34,7 +34,7 @@ public class PlayerController: MonoBehaviour {
 				f += 0.01f;
 
 			}
-			StartCoroutine(restartCurrentScene());
+			StartCoroutine(endGame());
 		}
 	}
 
@@ -67,16 +67,15 @@ public class PlayerController: MonoBehaviour {
 
 	}
 
-	public IEnumerator restartCurrentScene()
+	public IEnumerator endGame()
 	{
 		float time = 0f;
 
 		while (true) {
 			if (time >= 2) {
 				Debug.Log ("SCENE");
-				int scene = SceneManager.GetActiveScene ().buildIndex;
 
-				SceneManager.LoadScene (scene, LoadSceneMode.Single);
+				SceneManager.LoadScene (0, LoadSceneMode.Single);
 			}
 			yield return new WaitForSeconds (.1f);
 

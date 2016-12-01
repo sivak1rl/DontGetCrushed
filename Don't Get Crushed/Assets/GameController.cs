@@ -9,7 +9,7 @@ public class GameController : MonoBehaviour
 {
 	public GameObject enemy;
 
-	private static bool _paused;
+	public static bool _paused;
 
 	public static bool moving = false;
 
@@ -22,7 +22,6 @@ public class GameController : MonoBehaviour
 	public GameObject player;
 
 	public GameObject canvas;
-	public GameObject bc;
 
 
 	// Use this for initialization
@@ -45,11 +44,9 @@ public class GameController : MonoBehaviour
 		if (_paused) {
 			Time.timeScale = 1;
 			_paused = !_paused;
-			bc.GetComponent<BleacherController>().paused = _paused;
 		} else {
 			Time.timeScale = 0;
 			_paused = !_paused;
-			bc.GetComponent<BleacherController>().paused = _paused;
 		}
 		var enableds = this.canvas.GetComponentsInChildren<RawImage> ();
 
@@ -81,7 +78,7 @@ public class GameController : MonoBehaviour
 			yield return new WaitForSeconds (1f);
 			UnityEngine.Random r = new UnityEngine.Random ();
 			if (UnityEngine.Random.value > .5f) {
-				GameObject.Instantiate (enemy, new Vector3(250f + UnityEngine.Random.Range(-1f, 1f) * 75f, 90.7f, 250f + UnityEngine.Random.Range(-1f, 1f) * 75f), Quaternion.identity);
+				GameObject.Instantiate (enemy, new Vector3(250f + UnityEngine.Random.Range(-1f, 1f) * 75f, 89.6f, 250f + UnityEngine.Random.Range(-1f, 1f) * 75f), Quaternion.identity);
 			}
 		}
 	}
