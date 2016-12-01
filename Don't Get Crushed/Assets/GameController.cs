@@ -7,6 +7,7 @@ using System.Linq.Expressions;
 
 public class GameController : MonoBehaviour
 {
+	public GameObject enemy;
 
 	private static bool _paused;
 
@@ -27,6 +28,7 @@ public class GameController : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
+		StartCoroutine ("SpawnEnemies");
 		_paused = false;
 	}
 	
@@ -71,6 +73,16 @@ public class GameController : MonoBehaviour
 			Debug.Log (rot);
 			rot.eulerAngles = direction =='L' ? rot.eulerAngles - Vector3.up * _rotationSpeed : rot.eulerAngles + Vector3.up * _rotationSpeed;
 			player.transform.localRotation = rot;
+		}
+	}
+
+	public IEnumerator SpawnEnemies() {
+		while (true) {
+			yield return new WaitForSeconds (1f);
+			UnityEngine.Random r = new UnityEngine.Random ();
+			if (UnityEngine.Random.value > .5f) {
+				GameObject.Instantiate (enemy, new Vector3(250f + UnityEngine.Random.Range(-1f, 1f) * 75f, 90.7f, 250f + UnityEngine.Random.Range(-1f, 1f) * 75f), Quaternion.identity);
+			}
 		}
 	}
 }
