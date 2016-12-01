@@ -78,11 +78,11 @@ public class PlayerController: MonoBehaviour {
 
 				SceneManager.LoadScene (scene, LoadSceneMode.Single);
 			}
-			yield return new WaitForSeconds (.01f);
+			yield return new WaitForSeconds (.1f);
 
 			cover.GetComponent<RawImage> ().color = new Color (0f, 0f, 0f, time);
 			Debug.Log (time);
-			time += .01f;
+			time += .1f;
 		}
 	}
 }
